@@ -11,7 +11,9 @@ const port = process.env.PORT || 5000
 
 const {
     authUser,
-    postUser
+    postUser,
+    updateUserClasses,
+    getUserById
 } = userController
 
 app.use(bodyParser.json());
@@ -19,8 +21,10 @@ app.use(cors());
 
 app.get('/', (req,res) => res.send('hello world'))
 
-app.post('/signin',makeCallback(postUser))
-app.post('/login',makeCallback(authUser))
+app.post('/user/signin',makeCallback(postUser))
+app.post('/user/login',makeCallback(authUser))
+app.put('/user/classes',makeCallback(updateUserClasses))
+app.get('/user/:id',makeCallback(getUserById))
 
 app.listen(port,() => {
     console.log('Server is running at port ' + port);

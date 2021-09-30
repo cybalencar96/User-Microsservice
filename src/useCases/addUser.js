@@ -3,7 +3,7 @@ export default function makeAddUser ({usersDb}) {
     return async function addUser (userInfo) {
         const user = makeUser(userInfo);
         const credentials = user.getCredentials();
-        const exists = await usersDb.find(credentials.private.username);
+        const exists = await usersDb.findByUsername(credentials.private.username);
         if (exists) {
             return {
                 isCreated: false,
