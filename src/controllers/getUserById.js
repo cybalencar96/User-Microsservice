@@ -7,10 +7,18 @@ export default function makeGetUserById ({ findUser, Id }) {
 
             const user = await findUser(userId)
 
-            return {
-                statusCode: 201,
-                body: user
+            if (user) {
+                return {
+                    statusCode: 201,
+                    body: user
+                }
+            } else {
+                return {
+                    statusCode: 401,
+                    body: 'User not found'
+                }
             }
+            
         } 
         catch (e) {
             console.log(e)

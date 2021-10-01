@@ -12,6 +12,12 @@ export default function makeAddUser ({usersDb}) {
             }
         }
 
-        return usersDb.insert({...user});
+        const newUser = await usersDb.insert({...user})
+        
+        return {
+            isCreated: true,
+            text: 'user created successfully',
+            body: newUser
+        }
     }
 }

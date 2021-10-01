@@ -4,7 +4,9 @@ export default function makeFindUser ({usersDb}) {
         if (user) {
             return {
                 id: user._id,
-                public: user.credentials.public
+                public: user.credentials.public,
+                teaching: user.teaching,
+                learnings: user.learnings
             }
         } else {
             return null

@@ -20,8 +20,8 @@ export default function makeUsersDb({makeDb}) {
             createdAt: user.getCreatedAt()
         }
         const result = await users.insertOne(newUser)
-        const classInserted = await users.find({_id:result.insertedId}).toArray();
-        return classInserted[0];
+        const userInserted = await users.find({_id:result.insertedId}).toArray();
+        return userInserted[0];
     }
 
     async function findByUsername(username) {

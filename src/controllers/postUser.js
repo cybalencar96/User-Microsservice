@@ -2,12 +2,22 @@ export default function makePostUser ({ addUser }) {
     return async function postUser (httpRequest) {
         try {
             const {...userInfo} = httpRequest.body
-            const posted = await addUser({...userInfo})
+            const {isCreated,text,body} = await addUser({...userInfo})
 
-            return {
-                statusCode: 201,
-                body: posted
+            if (!isCreated) {
+                return {
+                    statusCode: 401,
+                    text: text,
+                    body: null
+                }
+            } else {
+                return {
+                    statusCode: 201,
+                    text: text,
+                    body: body
+                }
             }
+            
         } 
         catch (e) {
             console.log(e)
