@@ -27,5 +27,6 @@ app.put('/user/classes',makeCallback(updateUserClasses))
 app.get('/user/:id',makeCallback(getUserById))
 
 app.listen(port,() => {
-    console.log('Server is running at port ' + port);
+    console.log('Server users is running at port ' + port);
 });
+

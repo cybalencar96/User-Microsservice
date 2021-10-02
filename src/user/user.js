@@ -37,12 +37,12 @@ export default function buildMakeUser({ Id }) {
             throw new Error('Invalid url image');
         }
 
-        if (credentials.private.username.length < 6) {
-            throw new Error('Username must have more than 5 characteres');
+        if (credentials.private.username.length < 4) {
+            throw new Error('Username must have more than 3 characteres');
         }
 
-        if (credentials.private.password.length < 5) {
-            throw new Error('Username must have more than 4 characteres');
+        if (credentials.private.password.length < 4) {
+            throw new Error('Username must have more than 3 characteres');
         }
 
         if (learning.length > 0) {
